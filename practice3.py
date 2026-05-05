@@ -8,14 +8,13 @@ class FileManager:
         self.filename = filename
 
     def check_file(self):
-        print("Checking file...")
+        print("Checking file..")
         if os.path.exists(self.filename):
             print(f"File found: {self.filename}")
             return True
         else:
-            print(f"Error: {self.filename} not found. Please download the file from LMS.")
+            print(f"Error: {self.filename} not found.")
             return False
-
     def create_output_folder(self, folder='output'):
         print("Checking output folder...")
         if not os.path.exists(folder):
@@ -38,14 +37,14 @@ class DataLoader:
                     self.students.append(row)
             print(f"Data loaded successfully: {len(self.students)} students")
         except FileNotFoundError:
-            print(f"Error: File '{self.filename}' not found. Please check the filename.")
+            print(f"Error: File '{self.filename}' not found.")
         except Exception as e:
             print(f"Error: {e}")
         return self.students
 
     def preview(self, n=5):
         print(f"First {n} rows:")
-        for i in range(min(n, len(self.students))):
+        for i in range(n):
             s = self.students[i]
             print(f"{s['student_id']} | {s['age']} | {s['gender']} | {s['country']} | GPA: {s['GPA']}")
 
